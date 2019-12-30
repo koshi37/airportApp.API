@@ -10,9 +10,9 @@ public class GetFromContextMock {
     Connection connection4 = new Connection(4,4500);
 
 
-    public Iterable<Connection> getConnections() {
+    public Iterable<Object> getConnections() {
         System.out.println("ZAPYTANIE");
-        List<Connection> connections = new ArrayList<Connection>();
+        ArrayList<Object> connections = new ArrayList<Object>();
         connections.add(connection1);
         connections.add(connection2);
         connections.add(connection3);
@@ -20,6 +20,8 @@ public class GetFromContextMock {
 
         return connections;
     }
+
+
 
 
 }
