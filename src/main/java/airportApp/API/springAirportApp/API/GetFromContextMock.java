@@ -4,24 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetFromContextMock {
-    Connection connection1 = new Connection(1,1500);
+    /*Connection connection1 = new Connection(1,1500);
     Connection connection2 = new Connection(2,2500);
     Connection connection3 = new Connection(3,3500);
     Connection connection4 = new Connection(4,4500);
-
+*/
 
     public Iterable<Object> getConnections() {
         System.out.println("ZAPYTANIE");
         ArrayList<Object> connections = new ArrayList<Object>();
-        connections.add(connection1);
-        connections.add(connection2);
-        connections.add(connection3);
-        connections.add(connection4);
+        //connections.add(connection1);
+        //connections.add(connection2);
+        //connections.add(connection3);
+        //connections.add(connection4);
 
         return connections;
     }
-
-
-
-
 }
