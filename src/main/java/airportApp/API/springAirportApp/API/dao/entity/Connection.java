@@ -6,21 +6,27 @@ import java.time.LocalDate;
 @Entity
 @Table(name="connection")
 public class Connection {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Integer connectionId;
+    @Column
     private Double price;
-    private Integer starting_airport_ID;
-    private Integer destination_airport_ID;
+    @ManyToOne
+    @JoinColumn(name = "starting_airport_id")
+    private Airport starting_airport;
+    @ManyToOne
+    @JoinColumn(name = "destination_airport_id")
+    private Airport destination_airport;
+    @Column
     private LocalDate flight_date;
 
     public Connection(){}
 
-    public Connection(Integer connectionId, Double price, Integer starting_airport_ID, Integer destination_airport_ID, LocalDate flight_date) {
+    public Connection(Integer connectionId, Double price, Airport starting_airport, Airport destination_airport, LocalDate flight_date) {
         this.connectionId = connectionId;
         this.price = price;
-        this.starting_airport_ID = starting_airport_ID;
-        this.destination_airport_ID = destination_airport_ID;
+        this.starting_airport = starting_airport;
+        this.destination_airport = destination_airport;
         this.flight_date = flight_date;
     }
 
@@ -32,12 +38,12 @@ public class Connection {
         this.price = price;
     }
 
-    public void setStarting_airport_ID(Integer starting_airport_ID) {
-        this.starting_airport_ID = starting_airport_ID;
+    public void setStarting_airport(Airport starting_airport) {
+        this.starting_airport = starting_airport;
     }
 
-    public void setDestination_airport_ID(Integer destination_airport_ID) {
-        this.destination_airport_ID = destination_airport_ID;
+    public void setDestination_airport(Airport destination_airport) {
+        this.destination_airport = destination_airport;
     }
 
     public void setFlight_date(LocalDate flight_date) {
@@ -52,12 +58,12 @@ public class Connection {
         return price;
     }
 
-    public Integer getStarting_airport_ID() {
-        return starting_airport_ID;
+    public Airport getStarting_airport() {
+        return starting_airport;
     }
 
-    public Integer getDestination_airport_ID() {
-        return destination_airport_ID;
+    public Airport getDestination_airport() {
+        return destination_airport;
     }
 
     public LocalDate getFlight_date() {

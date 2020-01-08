@@ -1,21 +1,25 @@
 package airportApp.API.springAirportApp.API.dao.entity;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="airport")
 public class Airport {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Integer airport_id;
     private String address;
-    private Integer city_id;
+    @OneToOne
+    @JoinColumn(name="city_id",referencedColumnName = "city_id",unique=true, nullable=false, updatable=false)
+    private City city;
 
     public Airport(){}
-    public Airport(Integer airport_id, String address, Integer city_id) {
+    public Airport(Integer airport_id, String address, City city) {
         this.airport_id = airport_id;
         this.address = address;
-        this.city_id = city_id;
+        this.city = city;
     }
 
     public Integer getAirport_id() {
@@ -26,7 +30,7 @@ public class Airport {
         return address;
     }
 
-    public Integer getCity_id() {
-        return city_id;
+    public City getCity() {
+        return city;
     }
 }
