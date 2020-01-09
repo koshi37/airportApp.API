@@ -1,5 +1,7 @@
-public class Connectionn {
+public class Connection {
     Integer connectionId;
-    Integer price;
-    DateTime connectionDate;
+    Double price;
+    Integer starting_airport_ID;
+    Integer destination_airport_ID;
+    LocalDate flight_date;
 }
