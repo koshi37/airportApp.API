@@ -58,7 +58,7 @@ public class ClientApi {
     }
 
     @GetMapping
-    @RequestMapping("/{login}+{password}")
+    @RequestMapping("/login/{login}+{password}")
     public Client getUserByLogin(@PathVariable String login, @PathVariable String password)
     {
         for(Client c: clientManager.findAll())
