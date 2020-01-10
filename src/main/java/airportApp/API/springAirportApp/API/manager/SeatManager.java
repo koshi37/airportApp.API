@@ -26,4 +26,14 @@ public class SeatManager {
     {
         return seatRepo.findAll();
     }
+
+    public Seat save(Seat connection)
+    {
+        return seatRepo.save(connection);
+    }
+
+    public void deleteById(Integer id)
+    {
+        seatRepo.deleteById(id);
+    }
 }
