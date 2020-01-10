@@ -48,11 +48,27 @@ public class ConnectionApi {
     }
 
     @GetMapping
-    public Optional<Connection> getById(@RequestParam int index)
+    @RequestMapping("/{index}")
+    public Optional<Connection> getById(@PathVariable int index)
     {
         return connectionManager.findById(index);
     }
 
+    @GetMapping
+    @RequestMapping("/search")
+    public List<Connection> searchByStartDest(@RequestParam String starting, @RequestParam String destination)
+    {
+        List<Connection> result = new ArrayList<>();
+        for(Connection c: connectionManager.findAll())
+        {
+            if(c.getStarting_airport().getCity().getName().equals(starting) && c.getDestination_airport().getCity().getName().equals(destination))
+            {
+                result.add(c);
+                System.out.println(c.getStarting_airport().getCity().getName() + " -> "+c.getDestination_airport().getCity().getName());
+            }
+        }
+        return  result;
+    }
     @PostMapping
     public Connection addConnection(@RequestBody Connection connection)
     {
