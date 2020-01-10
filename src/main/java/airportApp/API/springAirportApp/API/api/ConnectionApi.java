@@ -68,6 +68,36 @@ public class ConnectionApi {
         }
         return  result;
     }
+
+    @GetMapping
+    @RequestMapping("/searchFrom/{starting}")
+    public List<Connection> searchByStart(@PathVariable String starting)
+    {
+        List<Connection> result = new ArrayList<>();
+        for(Connection c: connectionManager.findAll())
+        {
+            if(c.getStarting_airport().getCity().getName().equals(starting))
+            {
+                result.add(c);
+            }
+        }
+        return  result;
+    }
+
+    @GetMapping
+    @RequestMapping("/searchTo/{destination}")
+    public List<Connection> searchByDest(@PathVariable String destination)
+    {
+        List<Connection> result = new ArrayList<>();
+        for(Connection c: connectionManager.findAll())
+        {
+            if(c.getDestination_airport().getCity().getName().equals(destination))
+            {
+                result.add(c);
+            }
+        }
+        return  result;
+    }
     @PostMapping
     public Connection addConnection(@RequestBody Connection connection)
     {
