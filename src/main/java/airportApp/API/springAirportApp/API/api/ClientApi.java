@@ -2,6 +2,7 @@ package airportApp.API.springAirportApp.API.api;
 
 import airportApp.API.springAirportApp.API.dao.entity.Client;
 import airportApp.API.springAirportApp.API.dao.entity.Connection;
+import airportApp.API.springAirportApp.API.dao.entity.Reservation;
 import airportApp.API.springAirportApp.API.manager.ClientManager;
 import airportApp.API.springAirportApp.API.manager.ConnectionManager;
 import org.springframework.beans.factory.annotation.Autowired;

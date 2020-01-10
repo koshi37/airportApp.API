@@ -5,6 +5,8 @@ import airportApp.API.springAirportApp.API.manager.ReservationManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -32,6 +34,19 @@ public class ReservationApi {
     public Optional<Reservation> getById(@PathVariable int id)
     {
         return reservationManager.findById(id);
+    }
+
+    @GetMapping
+    @RequestMapping("/getReservationsForUser/{id}")
+    public Iterable<Reservation> getReservationsForUser(@PathVariable int id)
+    {
+        List<Reservation> reservations = new ArrayList<>();
+        for(Reservation r: reservationManager.findAll())
+        {
+            if(r.getClient_id() == id)
+                reservations.add(r);
+        }
+        return reservations;
     }
 
     @PostMapping

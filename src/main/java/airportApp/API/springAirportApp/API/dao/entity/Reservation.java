@@ -16,13 +16,15 @@ public class Reservation {
     @OneToOne
     @JoinColumn(name="seat_id")
     private Seat seat;
-    //private Client client;
+    private Integer client_id;
 
     public Reservation(){}
-    public Reservation(Integer reservation_id, Connection connection, Seat seat) {
+
+    public Reservation(Integer reservation_id, Connection connection, Seat seat, Integer client_id) {
         this.reservation_id = reservation_id;
         this.connection = connection;
         this.seat = seat;
+        this.client_id = client_id;
     }
 
     public Integer getReservation_id() {
@@ -35,5 +37,9 @@ public class Reservation {
 
     public Seat getSeat() {
         return seat;
+    }
+
+    public Integer getClient_id() {
+        return client_id;
     }
 }
