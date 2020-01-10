@@ -56,18 +56,33 @@ public class SeatApi {
     }
 
     @GetMapping
-    @RequestMapping("/notReserved")
-    public Iterable<Seat> getNotReservedSeats()
+    @RequestMapping("/notReserved/{id}")
+    public Iterable<Seat> getNotReservedSeats(@PathVariable int id)
     {
         List<Seat> seats = new ArrayList<>();
         for(Seat s: seatManager.findAll())
         {
-            if(!s.isReserved())
+            if(!s.isReserved() && s.getConnection_id() == id)
                 seats.add(s);
         }
         return seats;
     }
 
+    @GetMapping
+    @RequestMapping("/freeSeatsAmount/{id}")
+    public int freeSeatsAmount(@PathVariable int id)
+    {
+        List<Seat> seats = new ArrayList<>();
+        for(Seat s: seatManager.findAll())
+        {
+            if(!s.isReserved() && s.getConnection_id() == id)
+                seats.add(s);
+        }
+        return seats.size();
+    }
+
+    @PutMapping
+    @RequestMapping("/reserve")
     @PostMapping
     public Seat addUser(@RequestBody Seat seat)
     {

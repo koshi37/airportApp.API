@@ -1,11 +1,14 @@
 package airportApp.API.springAirportApp.API.api;
 
 import airportApp.API.springAirportApp.API.dao.entity.Connection;
+import airportApp.API.springAirportApp.API.dao.entity.Seat;
 import airportApp.API.springAirportApp.API.manager.ConnectionManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
@@ -98,6 +101,40 @@ public class ConnectionApi {
         }
         return  result;
     }
+
+    @GetMapping
+    @RequestMapping("/searchByPrice/{min}+{max}")
+    public List<Connection> searchByPrice(@PathVariable Double min, @PathVariable Double max)
+    {
+        List<Connection> result = new ArrayList<>();
+        for(Connection c: connectionManager.findAll())
+        {
+            if(c.getPrice() > min && c.getPrice() < max)
+            {
+                result.add(c);
+            }
+        }
+        return  result;
+    }
+
+    @GetMapping
+    @RequestMapping("/searchByDate/{date}")
+    public List<Connection> searchByDate(@PathVariable String date)
+    {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate comparedDate = LocalDate.parse(date, formatter);
+        List<Connection> result = new ArrayList<>();
+        for(Connection c: connectionManager.findAll())
+        {
+            System.out.println(comparedDate);
+            if(c.getFlight_date().isBefore(comparedDate))
+            {
+                result.add(c);
+            }
+        }
+        return  result;
+    }
+
     @PostMapping
     public Connection addConnection(@RequestBody Connection connection)
     {

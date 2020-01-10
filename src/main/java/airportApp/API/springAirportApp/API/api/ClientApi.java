@@ -84,7 +84,9 @@ public class ClientApi {
 
         return  result;
     }
+
     @PostMapping
+    @RequestMapping("/register")
     public Client addUser(@RequestBody Client client)
     {
         return clientManager.save(client);
