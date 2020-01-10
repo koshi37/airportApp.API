@@ -49,9 +49,10 @@ public class SeatApi {
     }
 
     @GetMapping
-    public Optional<Seat> getById(@RequestParam int index)
+    @RequestMapping("/{id}")
+    public Optional<Seat> getById(@PathVariable int id)
     {
-        return seatManager.findById(index);
+        return seatManager.findById(id);
     }
 
     @GetMapping

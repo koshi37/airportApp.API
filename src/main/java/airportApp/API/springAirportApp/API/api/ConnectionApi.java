@@ -48,10 +48,10 @@ public class ConnectionApi {
     }
 
     @GetMapping
-    @RequestMapping("/{index}")
-    public Optional<Connection> getById(@PathVariable int index)
+    @RequestMapping("/{id}")
+    public Optional<Connection> getById(@PathVariable int id)
     {
-        return connectionManager.findById(index);
+        return connectionManager.findById(id);
     }
 
     @GetMapping

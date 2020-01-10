@@ -28,9 +28,10 @@ public class CityApi {
     }
 
     @GetMapping
-    public Optional<City> getById(@RequestParam int index)
+    @RequestMapping("/{id}")
+    public Optional<City> getById(@RequestParam int id)
     {
-        return cityManager.findById(index);
+        return cityManager.findById(id);
     }
 
 }

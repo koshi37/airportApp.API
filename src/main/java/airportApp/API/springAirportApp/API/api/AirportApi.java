@@ -28,9 +28,10 @@ public class AirportApi {
     }
 
     @GetMapping
-    public Optional<Airport> getById(@RequestParam int index)
+    @RequestMapping("/{id}")
+    public Optional<Airport> getById(@PathVariable int id)
     {
-        return airportManager.findById(index);
+        return airportManager.findById(id);
     }
 
 }

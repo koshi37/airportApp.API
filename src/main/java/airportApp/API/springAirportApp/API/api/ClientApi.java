@@ -51,9 +51,10 @@ public class ClientApi {
     }
 
     @GetMapping
-    public Optional<Client> getById(@RequestParam int index)
+    @RequestMapping("/{id}")
+    public Optional<Client> getById(@PathVariable int id)
     {
-        return clientManager.findById(index);
+        return clientManager.findById(id);
     }
 
     @GetMapping
