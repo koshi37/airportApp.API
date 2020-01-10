@@ -26,4 +26,9 @@ public class ReservationManager {
     {
         return reservationRepo.findAll();
     }
+
+    public Reservation save(Reservation reservation)
+    {
+        return reservationRepo.save(reservation);
+    }
 }

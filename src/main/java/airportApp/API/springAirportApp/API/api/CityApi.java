@@ -29,7 +29,7 @@ public class CityApi {
 
     @GetMapping
     @RequestMapping("/{id}")
-    public Optional<City> getById(@RequestParam int id)
+    public Optional<City> getById(@PathVariable int id)
     {
         return cityManager.findById(id);
     }
