@@ -15,9 +15,6 @@ public class Client {
     private String surname;
     private String email;
     private boolean admin_permission;
-    @OneToMany
-    @JoinColumn(name="reservation_id")
-    private List<Reservation> reservations;
 
     public Client(){}
 
@@ -57,9 +54,5 @@ public class Client {
 
     public boolean isAdmin_permission() {
         return admin_permission;
-    }
-
-    public List<Reservation> getReservations() {
-        return reservations;
     }
 }

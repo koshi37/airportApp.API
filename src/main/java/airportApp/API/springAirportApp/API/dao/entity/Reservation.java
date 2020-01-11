@@ -1,7 +1,5 @@
 package airportApp.API.springAirportApp.API.dao.entity;
 
-import org.springframework.web.bind.annotation.GetMapping;
-
 import javax.persistence.*;
 
 @Entity
@@ -16,15 +14,17 @@ public class Reservation {
     @OneToOne
     @JoinColumn(name="seat_id")
     private Seat seat;
-    private Integer client_id;
+    @OneToOne
+    @JoinColumn(name="client_id")
+    private Client client;
 
     public Reservation(){}
 
-    public Reservation(Integer reservation_id, Connection connection, Seat seat, Integer client_id) {
+    public Reservation(Integer reservation_id, Connection connection, Seat seat, Client client) {
         this.reservation_id = reservation_id;
         this.connection = connection;
         this.seat = seat;
-        this.client_id = client_id;
+        this.client = client;
     }
 
     public Integer getReservation_id() {
@@ -39,7 +39,7 @@ public class Reservation {
         return seat;
     }
 
-    public Integer getClient_id() {
-        return client_id;
+    public Client getClient() {
+        return client;
     }
 }

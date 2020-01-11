@@ -43,7 +43,7 @@ public class ReservationApi {
         List<Reservation> reservations = new ArrayList<>();
         for(Reservation r: reservationManager.findAll())
         {
-            if(r.getClient_id() == id)
+            if(r.getClient().getClient_id() == id)
                 reservations.add(r);
         }
         return reservations;
