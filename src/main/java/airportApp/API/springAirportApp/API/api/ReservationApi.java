@@ -50,6 +50,7 @@ public class ReservationApi {
     }
 
     @PostMapping
+    @RequestMapping("/add")
     public Reservation addConnection(@RequestBody Reservation reservation)
     {
         return reservationManager.save(reservation);
