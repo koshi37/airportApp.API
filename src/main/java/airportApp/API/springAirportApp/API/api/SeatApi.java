@@ -81,15 +81,25 @@ public class SeatApi {
         return seats.size();
     }
 
-    @PutMapping
-    @RequestMapping("/reserve")
+    @GetMapping
+    @RequestMapping("/reserve/{id}")
+    public <Optional>Seat reserveSeat(@PathVariable int id)
+    {
+        Seat seat = seatManager.findById(id).get();
+        seat.setReserved(true);
+        seatManager.save(seat);
+        return seat;
+    }
+    
+    @RequestMapping("/add")
     @PostMapping
-    public Seat addUser(@RequestBody Seat seat)
+    public Seat addSeat(@RequestBody Seat seat)
     {
         return seatManager.save(seat);
     }
 
     @PutMapping
+    @RequestMapping("/changeState")
     public Seat updateSeat(@RequestBody Seat seat)
     {
         return seatManager.save(seat);
