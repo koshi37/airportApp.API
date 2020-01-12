@@ -31,4 +31,9 @@ public class ReservationManager {
     {
         return reservationRepo.save(reservation);
     }
+
+    public void deleteById(Integer id)
+    {
+        reservationRepo.deleteById(id);
+    }
 }

@@ -61,4 +61,11 @@ public class ReservationApi {
         return reservationManager.save(reservation);
     }
 
+    @DeleteMapping
+    @RequestMapping("/del")
+    public void deleteReservation(@RequestParam int index)
+    {
+        reservationManager.deleteById(index);
+    }
+
 }
