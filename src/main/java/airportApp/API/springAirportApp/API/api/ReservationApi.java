@@ -61,7 +61,7 @@ public class ReservationApi {
         return reservationManager.save(reservation);
     }
 
-    @DeleteMapping
+    @GetMapping
     @RequestMapping("/del/{id}")
     public void deleteReservation(@PathVariable int id)
     {
