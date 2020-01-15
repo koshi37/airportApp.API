@@ -136,22 +136,24 @@ public class ConnectionApi {
     }
 
     @PostMapping
+    @RequestMapping("/add")
     public Connection addConnection(@RequestBody Connection connection)
     {
         return connectionManager.save(connection);
     }
 
     @PutMapping
+    @RequestMapping("/edit")
     public Connection updateConnection(@RequestBody Connection connection)
     {
         return connectionManager.save(connection);
     }
 
-    @DeleteMapping
-    @RequestMapping("/del")
-    public void deleteConnection(@RequestParam int index)
+    @GetMapping
+    @RequestMapping("/del/{id}")
+    public void deleteConnection(@PathVariable int id)
     {
-        connectionManager.deleteById(index);
+        connectionManager.deleteById(id);
     }
 
 }
