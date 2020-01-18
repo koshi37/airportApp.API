@@ -117,23 +117,23 @@ public class ConnectionApi {
         return  result;
     }
 
-    @GetMapping
-    @RequestMapping("/searchByDate/{date}")
-    public List<Connection> searchByDate(@PathVariable String date)
-    {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate comparedDate = LocalDate.parse(date, formatter);
-        List<Connection> result = new ArrayList<>();
-        for(Connection c: connectionManager.findAll())
-        {
-            System.out.println(comparedDate);
-            if(c.getFlight_date().isBefore(comparedDate))
-            {
-                result.add(c);
-            }
-        }
-        return  result;
-    }
+//    @GetMapping
+//    @RequestMapping("/searchByDate/{date}")
+//    public List<Connection> searchByDate(@PathVariable String date)
+//    {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//        LocalDate comparedDate = LocalDate.parse(date, formatter);
+//        List<Connection> result = new ArrayList<>();
+//        for(Connection c: connectionManager.findAll())
+//        {
+//            System.out.println(comparedDate);
+//            if(c.getFlight_date().isBefore(comparedDate))
+//            {
+//                result.add(c);
+//            }
+//        }
+//        return  result;
+//    }
 
     @PostMapping
     public Connection addConnection(@RequestBody Connection connection)

@@ -1,7 +1,9 @@
 package airportApp.API.springAirportApp.API.dao.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="connection")
@@ -18,11 +20,11 @@ public class Connection {
     @JoinColumn(name = "destination_airport_id")
     private Airport destination_airport;
     @Column
-    private LocalDate flight_date;
+    private LocalDateTime flight_date;
 
     public Connection(){}
 
-    public Connection(Integer connectionId, Double price, Airport starting_airport, Airport destination_airport, LocalDate flight_date) {
+    public Connection(Integer connectionId, Double price, Airport starting_airport, Airport destination_airport, LocalDateTime flight_date) {
         this.connectionId = connectionId;
         this.price = price;
         this.starting_airport = starting_airport;
@@ -46,7 +48,7 @@ public class Connection {
         this.destination_airport = destination_airport;
     }
 
-    public void setFlight_date(LocalDate flight_date) {
+    public void setFlight_date(LocalDateTime flight_date) {
         this.flight_date = flight_date;
     }
 
@@ -66,7 +68,7 @@ public class Connection {
         return destination_airport;
     }
 
-    public LocalDate getFlight_date() {
+    public LocalDateTime getFlight_date() {
         return flight_date;
     }
 }
